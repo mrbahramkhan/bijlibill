@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bijli Bill Calculator Pakistan 2026 | MEPCO LESCO IESCO FESCO GEPCO</title>
-<meta name="description" content="Pakistan bijli bill calculator 2026. Units ya meter reading se bill nikalein: FPA, QTR, GST, protected aur unprotected slabs. WhatsApp par share karein. Free.">
+<meta name="description" content="Pakistan bijli bill calculator 2026. Units ya meter reading se bill nikalein: FPA, QTR, GST, protected aur unprotected slabs. Net metering aur net billing ka muqabla, solar payback, WhatsApp share. Free.">
 <meta name="theme-color" content="#1a6b3c">
 <link rel="canonical" href="https://YOUR-DOMAIN.vercel.app/">
 <meta property="og:title" content="Bijli Bill Calculator Pakistan 2026">
@@ -81,6 +81,30 @@ footer{text-align:center;padding:1.5rem 1rem 2rem;color:var(--m);font-size:.8rem
 <p style="margin-top:10px;font-weight:700">Kul: <span id="au">0</span> units/mahina</p>
 <button class="btn o" id="ag">⬆️ Calculator mein bhejein</button></section>
 
+<section class="card" id="solar"><h2>☀️ Solar: Net Metering vs Net Billing</h2>
+<div class="g">
+<div><label for="si">Grid se liye units (import)</label><input id="si" type="number" min="0" inputmode="numeric" placeholder="300"></div>
+<div><label for="se">Grid ko diye units (export)</label><input id="se" type="number" min="0" inputmode="numeric" placeholder="250"></div>
+<div class="f"><label for="sb">Buyback rate Rs/unit (naye connection)</label><input id="sb" type="number" step="0.01" min="0" value="11"></div>
+</div>
+<button class="btn" id="sg">☀️ Purane aur Naye System ka Muqabla</button>
+<div id="sr"></div>
+<p class="sm">Fixed charges aur FPA/QTR upar wale calculator ke khanon se liye jaate hain.</p>
+<h2 style="margin-top:1.2rem">💰 Solar Payback</h2>
+<div class="g">
+<div><label for="pk">System size (kW)</label><input id="pk" type="number" min="0" step="0.5" value="5"></div>
+<div><label for="pc">Kul kharcha (Rs)</label><input id="pc" type="number" min="0" inputmode="numeric" placeholder="Quote ke mutabiq"></div>
+<div><label for="pg">Units/kW/mahina</label><input id="pg" type="number" min="0" value="120"></div>
+<div><label for="ps">Khud istemal (%)</label><input id="ps" type="number" min="0" max="100" value="70"></div>
+<div class="f"><label for="pr2">Grid ka rate jo bachta hai (Rs/unit)</label><input id="pr2" type="number" min="0" step="0.5" value="45"></div>
+</div>
+<button class="btn o" id="pgo">Payback Nikalein</button><div id="pres"></div>
+<details><summary>Net metering aur net billing mein farq kya hai?</summary><p>Net metering mein export kiya har unit import ke barabar gina jata tha (1 unit = 1 unit). Net billing mein aap grid se poore tariff par bijli lete hain aur export ki bijli ka kam "buyback" rate milta hai.</p></details>
+<details><summary>Kya purane net metering walon par asar hai?</summary><p>Jin ka agreement 9 February 2026 se pehle sign tha, un ki purani shartein agreement khatam hone tak chalti hain (sources ke mutabiq). Naye connection ya baad mein barhaye gaye hisse par net billing lagti hai.</p></details>
+<details><summary>Buyback rate kitna hai?</summary><p>Alag alag sources Rs 8.13 se Rs 13 per unit batate hain, aur naye connection ka muddat 5 saal bataya ja raha hai. Rules abhi bhi badal rahe hain, so apni DISCO ya NEPRA se tasdeeq karke upar wala rate badal lein.</p></details>
+<details><summary>Ab solar se faida kahan hai?</summary><p>Faida ab export se zyada khud istemal mein hai: jo bijli aap khud use karte hain wo poore tariff (Rs 40+ per unit) ki bachat hai, jabke export sirf buyback rate par bikti hai. Din mein pump, AC aur washing machine chalana behtar hai.</p></details>
+</section>
+
 <section class="card"><h2>🕘 Pichle Hisaab</h2><div id="hs"><p class="sm">Abhi koi hisaab save nahi. Ye sirf aapke phone mein save hote hain.</p></div></section>
 
 <section class="card"><h2>📊 Residential Slab Rates (base, Rs/unit)</h2>
@@ -146,6 +170,23 @@ function au(){var s=0,q={},h={};document.querySelectorAll("#ab input").forEach(f
 $("ab").oninput=au;au();
 $("ag").onclick=function(){$("un").value=au();$("pv").value="";$("cr").value="";window.scrollTo({top:0,behavior:"smooth"})};
 
+// solar
+function fv(i,d){var v=parseFloat($(i).value);return isNaN(v)?d:v}
+$("sg").onclick=function(){
+  var im=fv("si",0),ex=fv("se",0),bb=fv("sb",11),fx=+$("fx").value||0,pu=+$("fp").value||0;
+  if(!(im>0)&&!(ex>0)){alert("Import aur export units daalein.");return}
+  var net=im-ex,o=calc(Math.max(0,net),false,fx,pu),n=calc(im,false,fx,pu),cr=ex*bb,pay=n.total-cr;
+  var oc=net<0?"<br><small>"+Math.abs(net)+" units ka credit agle mahine</small>":"";
+  var nc=pay<0?"Credit "+rs(-pay):rs(pay);
+  var diff=Math.max(0,pay)-o.total;
+  $("sr").innerHTML="<table><tr><th>System</th><th>Bill</th></tr><tr><td>Purana net metering (1:1)"+oc+"</td><td>"+rs(o.total)+"</td></tr><tr><td>Naya net billing<br><small>Import "+rs(n.total)+" minus export "+rs(cr)+"</small></td><td>"+nc+"</td></tr><tr class=t><td>Farq (naya - purana)</td><td>"+(diff>=0?"+":"-")+rs(Math.abs(diff))+"</td></tr></table><div class=tip>💡 Export kam aur khud istemal zyada karne se net billing mein bill kam hota hai.</div>";
+};
+$("pgo").onclick=function(){
+  var kw=fv("pk",0),c=fv("pc",0),g=fv("pg",120),sp=Math.min(100,Math.max(0,fv("ps",70)))/100,r=fv("pr2",45),bb=fv("sb",11);
+  var gen=kw*g,se=gen*sp,ex=gen-se,m=se*r+ex*bb,h="<table><tr><td>Mahana paidawar</td><td>"+Math.round(gen)+" units</td></tr><tr><td>Mahana bachat (khud istemal)</td><td>"+rs(se*r)+"</td></tr><tr><td>Mahana export kamai</td><td>"+rs(ex*bb)+"</td></tr><tr class=t><td>Kul mahana faida</td><td>"+rs(m)+"</td></tr>";
+  if(c>0&&m>0)h+="<tr><td>Payback muddat</td><td><b>"+(c/m/12).toFixed(1)+" saal</b></td></tr>";
+  $("pres").innerHTML=h+"</table><p class=sm>Andaza hai: panel ki kamzori, dhool, mausam aur rate tabdeeli shamil nahi.</p>";
+};
 // slab table
 var p0=0;$("st").innerHTML="<tr><th>Unprotected</th><th>Rs/unit</th></tr>"+UNPROT.map(function(s){var l=(p0+1)+(s[0]>1e8?"+":"-"+s[0]);p0=s[0];return"<tr><td>"+l+"</td><td>"+s[1].toFixed(2)+"</td></tr>"}).join("")+"<tr><th>Protected</th><th></th></tr><tr><td>1-100</td><td>"+PROT[0][1]+"</td></tr><tr><td>101-200</td><td>"+PROT[1][1]+"</td></tr>";
 $("upd").textContent="Base rates (tax aur adjustments ke baghair). Sources mein thora farq ho sakta hai, apne bill se zaroor milaein.";$("ld").textContent=CHECKED;
