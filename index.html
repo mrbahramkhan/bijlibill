@@ -49,7 +49,7 @@ footer{text-align:center;padding:1.5rem 1rem 2rem;color:var(--m);font-size:.8rem
 </style>
 </head>
 <body>
-<nav><div class="logo">Bijli<b>Bill</b>.pk</div><button id="th" aria-label="Dark mode">🌙 Dark</button></nav>
+<nav><div class="logo">Bijli<b>Bill</b>.pk</div><button id="ul" aria-label="Urdu">اردو</button> <button id="th" aria-label="Dark mode">🌙 Dark</button></nav>
 <div class="hero"><h1>⚡ Pakistan Bijli Bill Calculator 2026</h1><p>MEPCO, LESCO, IESCO, FESCO, GEPCO, PESCO, HESCO, QESCO. Units daalein, bill foran dekhein.</p></div>
 <main>
 <div class="ad">📢 Advertisement (AdSense approve hone ke baad)</div>
@@ -105,6 +105,31 @@ footer{text-align:center;padding:1.5rem 1rem 2rem;color:var(--m);font-size:.8rem
 <details><summary>Ab solar se faida kahan hai?</summary><p>Faida ab export se zyada khud istemal mein hai: jo bijli aap khud use karte hain wo poore tariff (Rs 40+ per unit) ki bachat hai, jabke export sirf buyback rate par bikti hai. Din mein pump, AC aur washing machine chalana behtar hai.</p></details>
 </section>
 
+<section class="card"><h2>🧾 Bill ki Lines Samjhein + Late Payment</h2>
+<details><summary>FPA kya hai?</summary><p>Fuel Price Adjustment: bijli banane ke asal fuel kharch aur tay shuda kharch ka farq, jo NEPRA mahine ke hisaab se tay karta hai.</p></details>
+<details><summary>QTR kya hai?</summary><p>Quarterly Tariff Adjustment: har 3 mahine mein NEPRA ka lagaya hua adjustment. Ye bill par alag line mein aata hai.</p></details>
+<details><summary>GST, TV fee aur income tax (235)?</summary><p>GST bijli ke kul bill par lagta hai. TV fee har bill mein shamil hoti hai. Income tax (section 235) sirf bade bill ya non-filer par lagta hai aur bill par alag likha hota hai.</p></details>
+<details><summary>Fixed charges kya hain?</summary><p>Ye sanctioned load ke hisaab se lagte hain, chahe aap bijli kam use karein. Apne bill ki "fixed charges" line dekh kar upar calculator mein daalein.</p></details>
+<div class="g" style="margin-top:10px">
+<div><label for="lpb">Bill ki raqam (Rs)</label><input id="lpb" type="number" min="0" placeholder="8000"></div>
+<div><label for="lpd">Kitne din late</label><input id="lpd" type="number" min="0" placeholder="3"></div>
+<div class="f"><label for="lpr">Late surcharge % (aam taur par 10, apne bill par dekhein)</label><input id="lpr" type="number" min="0" step="0.5" value="10"></div></div>
+<button class="btn o" id="lpg">Late Payment Bill Nikalein</button><div id="lpo"></div>
+<p class="sm">Due date ke baad ada karne par bill par surcharge lagta hai. Sahi raqam bill par "after due date" ke saamne likhi hoti hai.</p></section>
+
+<section class="card"><h2>🧊 Cheez ka Bijli Kharcha</h2>
+<div class="g"><div class="f"><label for="rc">Cheez</label><select id="rc"><option value="80">Pankha (80W)</option><option value="12">LED bulb (12W)</option><option value="150">Fridge (150W)</option><option value="1500">AC 1.5 ton, non-inverter (1500W)</option><option value="900">AC 1.5 ton, inverter (900W)</option><option value="3000">Electric geyser (3000W)</option><option value="1000">Iron / press (1000W)</option><option value="500">Washing machine (500W)</option><option value="750">Pani ki motor (750W)</option><option value="100">TV (100W)</option></select></div>
+<div><label for="rh">Ghantay/din</label><input id="rh" type="number" min="0" step="0.5" value="8"></div>
+<div><label for="rt">Aap ka rate (Rs/unit)</label><input id="rt" type="number" min="0" step="0.5" value="40"></div></div>
+<button class="btn o" id="rg">Kharcha Dekhein</button><div id="ro"></div>
+<p class="sm">Asal watt cheez aur model par mukhtalif hota hai. Label par likha dekhein.</p></section>
+
+<section class="card"><h2>📣 Galat Bill ki Shikayat Kaise Karein</h2>
+<details><summary>Step 1: Apni DISCO ko likhwayein</summary><p>Apne bill par chhapa shikayat ka number ya email istemal karein, ya DISCO ke sub-division office jayein. Bill ki copy, reference number aur meter reading ki tasveer saath rakhein, aur shikayat ka number zaroor note karein.</p></details>
+<details><summary>Step 2: Meter check ki darkhwast</summary><p>Agar meter tez chalne ka shak hai to likh kar meter check karwane ki darkhwast dein. Is ke dauran bill par adaigi ke qawaid bill ya DISCO se pooch lein.</p></details>
+<details><summary>Step 3: Upar ke idaray</summary><p>DISCO jawab na de to NEPRA ke consumer complaints ke tareeqe ya Wafaqi Mohtasib (Federal Ombudsman) ko likhein. Un ke abhi ke sahi rabte NEPRA aur Mohtasib ki official websites par dekhein.</p></details>
+<p class="sm">Is page par jaan boojh kar phone number nahi diye gaye, kyunke ye badalte rehte hain. Hamesha official website ya apne bill se dekhein.</p></section>
+
 <section class="card"><h2>🕘 Pichle Hisaab</h2><div id="hs"><p class="sm">Abhi koi hisaab save nahi. Ye sirf aapke phone mein save hote hain.</p></div></section>
 
 <section class="card"><h2>📊 Residential Slab Rates (base, Rs/unit)</h2>
@@ -119,7 +144,7 @@ footer{text-align:center;padding:1.5rem 1rem 2rem;color:var(--m);font-size:.8rem
 </section>
 <div class="ad">📢 Advertisement</div>
 </main>
-<footer><b>BijliBill.pk</b> · <a href="privacy.html">Privacy Policy</a> · Rates last checked: <span id="ld"></span><br>Azaad estimate tool. Kisi sarkari idare se munsalik nahi.</footer>
+<footer><div id="dl" class="sm">Apni company: <a href="/mepco">MEPCO</a> · <a href="/lesco">LESCO</a> · <a href="/iesco">IESCO</a> · <a href="/fesco">FESCO</a> · <a href="/gepco">GEPCO</a> · <a href="/pesco">PESCO</a> · <a href="/hesco">HESCO</a> · <a href="/qesco">QESCO</a> · <a href="/sepco">SEPCO</a> · <a href="/tesco">TESCO</a> · <a href="/ke">K-Electric</a> · </div><b>BijliBill.pk</b> · <a href="privacy.html">Privacy Policy</a> · Rates last checked: <span id="ld"></span><br>Azaad estimate tool. Kisi sarkari idare se munsalik nahi.</footer>
 
 <script>
 // ---- RATES: tariff badalne par sirf yahan tabdeeli karein ----
@@ -187,6 +212,12 @@ $("pgo").onclick=function(){
   if(c>0&&m>0)h+="<tr><td>Payback muddat</td><td><b>"+(c/m/12).toFixed(1)+" saal</b></td></tr>";
   $("pres").innerHTML=h+"</table><p class=sm>Andaza hai: panel ki kamzori, dhool, mausam aur rate tabdeeli shamil nahi.</p>";
 };
+// extra tools
+$("lpg").onclick=function(){var b=fv("lpb",0),d=fv("lpd",0),r=fv("lpr",10);if(!(b>0)){alert("Bill ki raqam daalein.");return}var sc=b*r/100;$("lpo").innerHTML="<table><tr><td>Asal bill</td><td>"+rs(b)+"</td></tr><tr><td>Late surcharge ("+r+"%)</td><td>"+rs(sc)+"</td></tr><tr class=t><td>Late ada karne par kul</td><td>"+rs(b+sc)+"</td></tr></table>"+(d>0?"<p class=sm>"+d+" din late: aam tor par surcharge dino par nahi, due date ke baad fixed hota hai, apna bill dekhein.</p>":"")};
+$("rg").onclick=function(){var w=+$("rc").value,h=fv("rh",0),r=fv("rt",40),u=w*h/1000;$("ro").innerHTML="<table><tr><td>Roz ke units</td><td>"+u.toFixed(2)+"</td></tr><tr><td>Roz ka kharcha</td><td>"+rs(u*r)+"</td></tr><tr class=t><td>Mahine ka kharcha (30 din)</td><td>"+rs(u*r*30)+"</td></tr></table>"};
+// Urdu toggle (sirf mukhya calculator)
+var I18N=[[".hero h1","⚡ پاکستان بجلی بل کیلکولیٹر 2026"],[".hero p","اپنی ڈسکو کے یونٹ درج کریں اور بل فوراً دیکھیں۔"],["main .card h2","🔢 بل نکالیں"],["label[for=pv]","پچھلی ریڈنگ"],["label[for=cr]","موجودہ ریڈنگ"],["label[for=un]","یا سیدھے یونٹ"],["label[for=fx]","فکسڈ چارجز (روپے)"],["label[for=fp]","FPA + QTR (روپے فی یونٹ)"],["#go","⚡ بل نکالیں"],["#wa","📲 واٹس ایپ پر شیئر کریں"]],ORIG=I18N.map(function(x){return document.querySelector(x[0]).textContent}),ur=false;
+$("ul").onclick=function(){ur=!ur;I18N.forEach(function(x,i){document.querySelector(x[0]).textContent=ur?x[1]:ORIG[i]});document.documentElement.lang=ur?"ur":"ur-PK";$("ul").textContent=ur?"Roman":"اردو"};
 // slab table
 var p0=0;$("st").innerHTML="<tr><th>Unprotected</th><th>Rs/unit</th></tr>"+UNPROT.map(function(s){var l=(p0+1)+(s[0]>1e8?"+":"-"+s[0]);p0=s[0];return"<tr><td>"+l+"</td><td>"+s[1].toFixed(2)+"</td></tr>"}).join("")+"<tr><th>Protected</th><th></th></tr><tr><td>1-100</td><td>"+PROT[0][1]+"</td></tr><tr><td>101-200</td><td>"+PROT[1][1]+"</td></tr>";
 $("upd").textContent="Base rates (tax aur adjustments ke baghair). Sources mein thora farq ho sakta hai, apne bill se zaroor milaein.";$("ld").textContent=CHECKED;
