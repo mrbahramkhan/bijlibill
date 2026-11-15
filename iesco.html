@@ -20,6 +20,7 @@ body{background:var(--bg);color:var(--t);font:16px/1.55 system-ui,-apple-system,
 nav{background:#1a6b3c;color:#fff;padding:.8rem 1.2rem;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:9}
 .logo{font-weight:800;font-size:1.2rem}.logo b{color:var(--a)}
 nav button{background:rgba(255,255,255,.15);border:0;color:#fff;border-radius:99px;padding:6px 12px;cursor:pointer;font-size:.85rem}
+nav select{width:auto;background:rgba(255,255,255,.15);color:#fff;border:0;border-radius:99px;padding:6px 10px;font-size:.85rem}nav select option{color:#000}
 .hero{background:linear-gradient(135deg,#1a6b3c,#0f4a28);color:#fff;text-align:center;padding:2rem 1rem 2.3rem}
 .hero h1{font-size:clamp(1.5rem,4vw,2.3rem);line-height:1.2;margin-bottom:.4rem}.hero p{opacity:.8;max-width:520px;margin:auto;font-size:.95rem}
 main{max-width:780px;margin:0 auto;padding:1.2rem}
@@ -49,7 +50,7 @@ footer{text-align:center;padding:1.5rem 1rem 2rem;color:var(--m);font-size:.8rem
 </style>
 </head>
 <body>
-<nav><div class="logo">Bijli<b>Bill</b>.pk</div><button id="ul" aria-label="Urdu">اردو</button> <button id="th" aria-label="Dark mode">🌙 Dark</button></nav>
+<nav><div class="logo">Bijli<b>Bill</b>.pk</div><select id="lg" aria-label="Language"><option value="en">English</option><option value="ur">اردو</option><option value="ro">Roman Urdu</option></select> <button id="th" aria-label="Dark mode">🌙 Dark</button></nav>
 <div class="hero"><h1>⚡ IESCO Bill Calculator 2026</h1><p>MEPCO, LESCO, IESCO, FESCO, GEPCO, PESCO, HESCO, QESCO. Enter your units and see your bill instantly.</p></div>
 <main>
 <p class="sm" style="margin:0 0 .8rem">IESCO service area: Islamabad, Rawalpindi, Attock, Chakwal, Jhelum. The tariff is uniform across Pakistan; differences come only from FPA/QTR and fixed charges, which you can enter from your bill.</p>
@@ -216,9 +217,12 @@ $("pgo").onclick=function(){
 // extra tools
 $("lpg").onclick=function(){var b=fv("lpb",0),d=fv("lpd",0),r=fv("lpr",10);if(!(b>0)){alert("Please enter the bill amount.");return}var sc=b*r/100;$("lpo").innerHTML="<table><tr><td>Original bill</td><td>"+rs(b)+"</td></tr><tr><td>Late surcharge ("+r+"%)</td><td>"+rs(sc)+"</td></tr><tr class=t><td>Total if paid late</td><td>"+rs(b+sc)+"</td></tr></table>"+(d>0?"<p class=sm>"+d+" days late: the surcharge is usually a fixed amount after the due date, not per day. Check your bill.</p>":"")};
 $("rg").onclick=function(){var w=+$("rc").value,h=fv("rh",0),r=fv("rt",40),u=w*h/1000;$("ro").innerHTML="<table><tr><td>Daily units</td><td>"+u.toFixed(2)+"</td></tr><tr><td>Daily cost</td><td>"+rs(u*r)+"</td></tr><tr class=t><td>Monthly cost (30 days)</td><td>"+rs(u*r*30)+"</td></tr></table>"};
-// Urdu toggle (sirf mukhya calculator)
-var I18N=[[".hero h1","⚡ پاکستان بجلی بل کیلکولیٹر 2026"],[".hero p","اپنی ڈسکو کے یونٹ درج کریں اور بل فوراً دیکھیں۔"],["main .card h2","🔢 بل نکالیں"],["label[for=pv]","پچھلی ریڈنگ"],["label[for=cr]","موجودہ ریڈنگ"],["label[for=un]","یا سیدھے یونٹ"],["label[for=fx]","فکسڈ چارجز (روپے)"],["label[for=fp]","FPA + QTR (روپے فی یونٹ)"],["#go","⚡ بل نکالیں"],["#wa","📲 واٹس ایپ پر شیئر کریں"]],ORIG=I18N.map(function(x){return document.querySelector(x[0]).textContent}),ur=false;
-$("ul").onclick=function(){ur=!ur;I18N.forEach(function(x,i){document.querySelector(x[0]).textContent=ur?x[1]:ORIG[i]});document.documentElement.lang=ur?"ur":"en";$("ul").textContent=ur?"English":"اردو"};
+// Language switch: English / Urdu script / Roman Urdu (main calculator only)
+var I18N=[[".hero h1","⚡ پاکستان بجلی بل کیلکولیٹر 2026","⚡ Pakistan Bijli Bill Calculator 2026"],[".hero p","اپنی ڈسکو کے یونٹ درج کریں اور بل فوراً دیکھیں۔","Apni company ke units daalein aur bill foran dekhein."],["main .card h2","🔢 بل نکالیں","🔢 Bill Calculate Karein"],["label[for=pv]","پچھلی ریڈنگ","Pichli reading"],["label[for=cr]","موجودہ ریڈنگ","Maujooda reading"],["label[for=un]","یا سیدھے یونٹ","Ya seedhe units"],["label[for=fx]","فکسڈ چارجز (روپے)","Fixed charges (Rs)"],["label[for=fp]","FPA + QTR (روپے فی یونٹ)","FPA + QTR (Rs/unit)"],["#go","⚡ بل نکالیں","⚡ Bill Nikalein"],["#wa","📲 واٹس ایپ پر شیئر کریں","📲 WhatsApp par share karein"]];
+var ORIG=I18N.map(function(x){return document.querySelector(x[0]).textContent}),DN=ORIG[0].indexOf("Pakistan")<0?ORIG[0].replace("⚡ ","").replace(" Bill Calculator 2026",""):"";
+function setL(l){I18N.forEach(function(x,i){var t=ORIG[i];if(l=="ur")t=(i==0&&DN)?"⚡ "+DN+" بجلی بل کیلکولیٹر 2026":x[1];if(l=="ro")t=(i==0&&DN)?"⚡ "+DN+" Bijli Bill Calculator 2026":x[2];document.querySelector(x[0]).textContent=t});document.documentElement.lang={en:"en",ur:"ur",ro:"ur-Latn"}[l];$("lg").value=l;try{localStorage.setItem("bb_l",l)}catch(e){}}
+$("lg").onchange=function(){setL(this.value)};
+var sl=null;try{sl=localStorage.getItem("bb_l")}catch(e){}if(sl&&sl!="en")setL(sl);
 // slab table
 var p0=0;$("st").innerHTML="<tr><th>Unprotected</th><th>Rs/unit</th></tr>"+UNPROT.map(function(s){var l=(p0+1)+(s[0]>1e8?"+":"-"+s[0]);p0=s[0];return"<tr><td>"+l+"</td><td>"+s[1].toFixed(2)+"</td></tr>"}).join("")+"<tr><th>Protected</th><th></th></tr><tr><td>1-100</td><td>"+PROT[0][1]+"</td></tr><tr><td>101-200</td><td>"+PROT[1][1]+"</td></tr>";
 $("upd").textContent="Base rates (excluding taxes and adjustments). Sources differ slightly, so always compare with your own bill.";$("ld").textContent=CHECKED;
