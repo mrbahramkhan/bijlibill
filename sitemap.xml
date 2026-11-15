@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url><loc>https://utilitybill.vercel.app/</loc></url>
-<url><loc>https://utilitybill.vercel.app/privacy</loc></url>
-<url><loc>https://utilitybill.vercel.app/mepco</loc></url>
-<url><loc>https://utilitybill.vercel.app/lesco</loc></url>
-<url><loc>https://utilitybill.vercel.app/iesco</loc></url>
-<url><loc>https://utilitybill.vercel.app/fesco</loc></url>
-<url><loc>https://utilitybill.vercel.app/gepco</loc></url>
-<url><loc>https://utilitybill.vercel.app/pesco</loc></url>
-<url><loc>https://utilitybill.vercel.app/hesco</loc></url>
-<url><loc>https://utilitybill.vercel.app/qesco</loc></url>
-<url><loc>https://utilitybill.vercel.app/sepco</loc></url>
-<url><loc>https://utilitybill.vercel.app/tesco</loc></url>
-<url><loc>https://utilitybill.vercel.app/ke</loc></url>
-<url><loc>https://utilitybill.vercel.app/gas</loc></url>
-<url><loc>https://utilitybill.vercel.app/water</loc></url>
-<url><loc>https://utilitybill.vercel.app/internet</loc></url>
-<url><loc>https://utilitybill.vercel.app/split</loc></url>
+<url><loc>https://utilitybill.vercel.app/fesco</loc><lastmod>2026-11-15</lastmod></url>
+<url><loc>https://utilitybill.vercel.app/gas</loc><lastmod>2026-11-15</lastmod></url>
+<url><loc>https://utilitybill.vercel.app/gepco</loc><lastmod>2026-11-15</lastmod></url>
+<url><loc>https://utilitybill.vercel.app/hesco</loc><lastmod>2026-11-15</lastmod></url>
+<url><loc>https://utilitybill.vercel.app/iesco</loc><lastmod>2026-11-15</lastmod></url>
+<url><loc>https://utilitybill.vercel.app/</loc><lastmod>2026-11-15</lastmod></url>
+<url><loc>https://utilitybill.vercel.app/internet</loc><lastmod>2026-11-15</lastmod></url>
+<url><loc>https://utilitybill.vercel.app/ke</loc><lastmod>2026-11-15</lastmod></url>
+<url><loc>https://utilitybill.vercel.app/lesco</loc><lastmod>2026-11-15</lastmod></url>
+<url><loc>https://utilitybill.vercel.app/mepco</loc><lastmod>2026-11-15</lastmod></url>
+<url><loc>https://utilitybill.vercel.app/pesco</loc><lastmod>2026-11-15</lastmod></url>
+<url><loc>https://utilitybill.vercel.app/privacy</loc><lastmod>2026-11-15</lastmod></url>
+<url><loc>https://utilitybill.vercel.app/qesco</loc><lastmod>2026-11-15</lastmod></url>
+<url><loc>https://utilitybill.vercel.app/sepco</loc><lastmod>2026-11-15</lastmod></url>
+<url><loc>https://utilitybill.vercel.app/split</loc><lastmod>2026-11-15</lastmod></url>
+<url><loc>https://utilitybill.vercel.app/tesco</loc><lastmod>2026-11-15</lastmod></url>
+<url><loc>https://utilitybill.vercel.app/water</loc><lastmod>2026-11-15</lastmod></url>
 </urlset>

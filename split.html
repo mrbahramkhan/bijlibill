@@ -8,11 +8,10 @@
 <meta name="description" content="Split a shared utility bill equally or by share and total your monthly utilities.">
 <meta name="theme-color" content="#1a6b3c">
 <link rel="canonical" href="https://utilitybill.vercel.app/split">
-<meta property="og:title" content="Pakistan Utility Bill Calculator 2026">
-<meta property="og:description" content="Calculate your electricity bill instantly. NEPRA 2026 slabs.">
+<meta property="og:title" content="Split Utility Bills &amp; Monthly Budget Calculator Pakistan">
+<meta property="og:description" content="Split a shared utility bill equally or by share and total your monthly utilities.">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8557006651582330"
      crossorigin="anonymous"></script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"UtilityBill.pk","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"PKR"}}</script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--bg:#f5f7fa;--card:#fff;--p:#1a6b3c;--pl:#e8f5ee;--t:#1a202c;--m:#6b7788;--b:#e2e8f0;--a:#f4a623;--r:14px}
@@ -23,6 +22,7 @@ nav{background:#1a6b3c;color:#fff;padding:.8rem 1.2rem;display:flex;justify-cont
 nav button{background:rgba(255,255,255,.15);border:0;color:#fff;border-radius:99px;padding:6px 12px;cursor:pointer;font-size:.85rem}
 nav select{width:auto;background:rgba(255,255,255,.15);color:#fff;border:0;border-radius:99px;padding:6px 10px;font-size:.85rem}nav select option{color:#000}
 .tabs{display:flex;gap:6px;overflow-x:auto;margin-bottom:1rem;padding-bottom:4px}.tabs button{flex:none;border:1.5px solid var(--b);background:var(--card);color:var(--t);border-radius:99px;padding:8px 14px;font-size:.9rem;cursor:pointer}.tabs button.on{background:var(--p);color:#fff;border-color:var(--p)}[data-theme=dark] .tabs button.on{color:#06210f}
+.qa h3{font-size:.95rem;margin:.8rem 0 .2rem}.qa p{font-size:.9rem;color:var(--m)}
 .hero{background:linear-gradient(135deg,#1a6b3c,#0f4a28);color:#fff;text-align:center;padding:2rem 1rem 2.3rem}
 .hero h1{font-size:clamp(1.5rem,4vw,2.3rem);line-height:1.2;margin-bottom:.4rem}.hero p{opacity:.8;max-width:520px;margin:auto;font-size:.95rem}
 main{max-width:780px;margin:0 auto;padding:1.2rem}
@@ -50,6 +50,15 @@ details{border-bottom:1px solid var(--b);padding:.6rem 0}summary{cursor:pointer;
 .h{display:flex;justify-content:space-between;font-size:.88rem;padding:6px 0;border-bottom:1px solid var(--b)}
 footer{text-align:center;padding:1.5rem 1rem 2rem;color:var(--m);font-size:.8rem}footer a{color:var(--p)}
 </style>
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://utilitybill.vercel.app/split">
+<meta property="og:site_name" content="UtilityBill.pk">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Split Utility Bills &amp; Monthly Budget Calculator Pakistan">
+<meta name="twitter:description" content="Split a shared utility bill equally or by share and total your monthly utilities.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E⚡%3C/text%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://utilitybill.vercel.app/#site","url":"https://utilitybill.vercel.app/","name":"UtilityBill.pk","inLanguage":["en","ur"]},{"@type":"WebPage","@id":"https://utilitybill.vercel.app/split#page","url":"https://utilitybill.vercel.app/split","name":"Split Utility Bills & Monthly Budget Calculator Pakistan","description":"Split a shared utility bill equally or by share and total your monthly utilities.","isPartOf":{"@id":"https://utilitybill.vercel.app/#site"},"dateModified":"2026-11-15"},{"@type":"WebApplication","name":"Split Utility Bills & Monthly Budget Calculator Pakistan","url":"https://utilitybill.vercel.app/split","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","offers":{"@type":"Offer","price":"0","priceCurrency":"PKR"},"inLanguage":["en","ur"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://utilitybill.vercel.app/"},{"@type":"ListItem","position":2,"name":"Split Utility Bills & Monthly Budget Calculator Pakistan","item":"https://utilitybill.vercel.app/split"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I split a utility bill fairly?","acceptedAnswer":{"@type":"Answer","text":"Divide the total equally for shared use, or use unequal shares such as 3,2,1 so each person pays in proportion to their use. The calculator on this page supports both."}},{"@type":"Question","name":"How do I find my total monthly utility cost?","acceptedAnswer":{"@type":"Answer","text":"Add your electricity, gas, water, internet and phone bills. Multiply by 12 to see the yearly cost."}}]}]}</script>
 </head>
 <body>
 <nav><div class="logo">Utility<b>Bill</b>.pk</div><select id="lg" aria-label="Language"><option value="en">English</option><option value="ur">اردو</option><option value="ro">Roman Urdu</option></select> <button id="th" aria-label="Dark mode">🌙 Dark</button></nav>
@@ -175,6 +184,7 @@ footer{text-align:center;padding:1.5rem 1rem 2rem;color:var(--m);font-size:.8rem
 <section class="card"><h2>🗓️ Monthly Utilities Total</h2><div class="g">
 <div><label for="me">Electricity (Rs)</label><input id="me" type="number" min="0" step="any" placeholder=""></div><div><label for="mg2">Gas (Rs)</label><input id="mg2" type="number" min="0" step="any" placeholder=""></div><div><label for="mw">Water (Rs)</label><input id="mw" type="number" min="0" step="any" placeholder=""></div><div><label for="mi">Internet (Rs)</label><input id="mi" type="number" min="0" step="any" placeholder=""></div><div><label for="mp">Phone (Rs)</label><input id="mp" type="number" min="0" step="any" placeholder=""></div><div><label for="mo">Other (Rs)</label><input id="mo" type="number" min="0" step="any" placeholder=""></div></div>
 <button class="btn o" id="mg">Calculate Total</button><div id="mo2"></div></section></div>
+<section class="card qa" id="quick-answers"><h2>Quick Answers</h2><h3>How do I split a utility bill fairly?</h3><p>Divide the total equally for shared use, or use unequal shares such as 3,2,1 so each person pays in proportion to their use. The calculator on this page supports both.</p><h3>How do I find my total monthly utility cost?</h3><p>Add your electricity, gas, water, internet and phone bills. Multiply by 12 to see the yearly cost.</p><p class="sm">Last updated: <time datetime="2026-11-15">15 November 2026</time>. These are estimates; always verify with your official bill.</p></section>
 </main>
 <footer><div class="sm">Other utilities: <a href="/gas">Gas</a> · <a href="/water">Water</a> · <a href="/internet">Internet &amp; Phone</a> · <a href="/split">Split &amp; Total</a></div><div id="dl" class="sm">Your company: <a href="/mepco">MEPCO</a> · <a href="/lesco">LESCO</a> · <a href="/iesco">IESCO</a> · <a href="/fesco">FESCO</a> · <a href="/gepco">GEPCO</a> · <a href="/pesco">PESCO</a> · <a href="/hesco">HESCO</a> · <a href="/qesco">QESCO</a> · <a href="/sepco">SEPCO</a> · <a href="/tesco">TESCO</a> · <a href="/ke">K-Electric</a> · </div><b>UtilityBill.pk</b> · <a href="privacy.html">Privacy Policy</a> · Rates last checked: <span id="ld"></span><br>Independent estimate tool. Not affiliated with any government body.</footer>
 

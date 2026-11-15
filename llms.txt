@@ -1,0 +1,28 @@
+# UtilityBill.pk
+> Free Pakistan utility bill calculators: electricity (all DISCOs and K-Electric), gas (SNGPL/SSGC), water, internet and phone taxes, net metering vs net billing, solar payback and bill splitting. Estimates only; not affiliated with NEPRA, OGRA or any utility company.
+
+## Main tools
+- [Utility bill calculator (all utilities)](https://utilitybill.vercel.app/)
+- [Gas bill estimator](https://utilitybill.vercel.app/gas)
+- [Water bill estimator](https://utilitybill.vercel.app/water)
+- [Internet and phone tax calculator](https://utilitybill.vercel.app/internet)
+- [Split bills and monthly total](https://utilitybill.vercel.app/split)
+
+## Electricity by company
+- [FESCO bill calculator](https://utilitybill.vercel.app/fesco)
+- [GEPCO bill calculator](https://utilitybill.vercel.app/gepco)
+- [HESCO bill calculator](https://utilitybill.vercel.app/hesco)
+- [IESCO bill calculator](https://utilitybill.vercel.app/iesco)
+- [K-Electric bill calculator](https://utilitybill.vercel.app/ke)
+- [LESCO bill calculator](https://utilitybill.vercel.app/lesco)
+- [MEPCO bill calculator](https://utilitybill.vercel.app/mepco)
+- [PESCO bill calculator](https://utilitybill.vercel.app/pesco)
+- [QESCO bill calculator](https://utilitybill.vercel.app/qesco)
+- [SEPCO bill calculator](https://utilitybill.vercel.app/sepco)
+- [TESCO bill calculator](https://utilitybill.vercel.app/tesco)
+
+## Notes
+- Electricity base slab rates were last checked in November 2026 (unprotected: about Rs 22.44 to Rs 47.69 per unit before taxes).
+- Gas, water and internet figures depend on the rates printed on the user's own bill.
+- Net metering vs net billing buyback rates vary by source and change often; verify with the DISCO or NEPRA.
+- Contact: mrbkglt@gmail.com
