@@ -8,6 +8,13 @@
 - [Internet and phone tax calculator](https://utilitybill.vercel.app/internet)
 - [Split bills and monthly total](https://utilitybill.vercel.app/split)
 
+## Guides (Roman Urdu)
+- [Bijli ka Bill Online Kaise Check Karein (MEPCO, LESCO, IESCO, FESCO)](https://utilitybill.vercel.app/guides/electricity-bill-online-check)
+- [Bijli ka Bill Kaise Calculate Karein: Slab, FPA, QTR aur GST Samjhein](https://utilitybill.vercel.app/guides/bijli-ka-bill-kaise-calculate-karein)
+- [Protected Bijli Consumer Kaun Hota Hai aur Kaise Bante Hain?](https://utilitybill.vercel.app/guides/protected-consumer-kaise-bante-hain)
+- [Net Metering aur Net Billing Mein Kya Farq Hai? (Solar 2026)](https://utilitybill.vercel.app/guides/net-metering-aur-net-billing-mein-farq)
+- [Bijli ka Bill Kam Karne ke 8 Asaan Tareeqay](https://utilitybill.vercel.app/guides/electricity-bill-kam-karne-ke-tareeqay)
+
 ## Electricity by company
 - [FESCO bill calculator](https://utilitybill.vercel.app/fesco)
 - [GEPCO bill calculator](https://utilitybill.vercel.app/gepco)
