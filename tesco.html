@@ -12,7 +12,7 @@
 <meta property="og:description" content="Calculate your electricity bill instantly. NEPRA 2026 slabs.">
 <!-- After AdSense approval, uncomment this line and replace the ID
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"BijliBill.pk","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"PKR"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"UtilityBill.pk","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"PKR"}}</script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--bg:#f5f7fa;--card:#fff;--p:#1a6b3c;--pl:#e8f5ee;--t:#1a202c;--m:#6b7788;--b:#e2e8f0;--a:#f4a623;--r:14px}
@@ -22,6 +22,7 @@ nav{background:#1a6b3c;color:#fff;padding:.8rem 1.2rem;display:flex;justify-cont
 .logo{font-weight:800;font-size:1.2rem}.logo b{color:var(--a)}
 nav button{background:rgba(255,255,255,.15);border:0;color:#fff;border-radius:99px;padding:6px 12px;cursor:pointer;font-size:.85rem}
 nav select{width:auto;background:rgba(255,255,255,.15);color:#fff;border:0;border-radius:99px;padding:6px 10px;font-size:.85rem}nav select option{color:#000}
+.tabs{display:flex;gap:6px;overflow-x:auto;margin-bottom:1rem;padding-bottom:4px}.tabs button{flex:none;border:1.5px solid var(--b);background:var(--card);color:var(--t);border-radius:99px;padding:8px 14px;font-size:.9rem;cursor:pointer}.tabs button.on{background:var(--p);color:#fff;border-color:var(--p)}[data-theme=dark] .tabs button.on{color:#06210f}
 .hero{background:linear-gradient(135deg,#1a6b3c,#0f4a28);color:#fff;text-align:center;padding:2rem 1rem 2.3rem}
 .hero h1{font-size:clamp(1.5rem,4vw,2.3rem);line-height:1.2;margin-bottom:.4rem}.hero p{opacity:.8;max-width:520px;margin:auto;font-size:.95rem}
 main{max-width:780px;margin:0 auto;padding:1.2rem}
@@ -51,9 +52,11 @@ footer{text-align:center;padding:1.5rem 1rem 2rem;color:var(--m);font-size:.8rem
 </style>
 </head>
 <body>
-<nav><div class="logo">Bijli<b>Bill</b>.pk</div><select id="lg" aria-label="Language"><option value="en">English</option><option value="ur">اردو</option><option value="ro">Roman Urdu</option></select> <button id="th" aria-label="Dark mode">🌙 Dark</button></nav>
+<nav><div class="logo">Utility<b>Bill</b>.pk</div><select id="lg" aria-label="Language"><option value="en">English</option><option value="ur">اردو</option><option value="ro">Roman Urdu</option></select> <button id="th" aria-label="Dark mode">🌙 Dark</button></nav>
 <div class="hero"><h1>⚡ TESCO Bill Calculator 2026</h1><p>MEPCO, LESCO, IESCO, FESCO, GEPCO, PESCO, HESCO, QESCO. Enter your units and see your bill instantly.</p></div>
 <main>
+<div class="tabs" id="tabs"><button data-t="el">⚡ Electricity</button><button data-t="gas">🔥 Gas</button><button data-t="water">💧 Water</button><button data-t="net">📶 Internet &amp; Phone</button><button data-t="split">🧮 Split &amp; Total</button></div>
+<div id="g-el">
 <p class="sm" style="margin:0 0 .8rem">TESCO service area: the tribal districts. The tariff is uniform across Pakistan; differences come only from FPA/QTR and fixed charges, which you can enter from your bill.</p>
 <div class="ad">📢 Advertisement</div>
 
@@ -146,8 +149,35 @@ footer{text-align:center;padding:1.5rem 1rem 2rem;color:var(--m);font-size:.8rem
 <details><summary>Is this an official tool?</summary><p>No. This is an independent calculator and is not affiliated with any DISCO or NEPRA. For your actual bill, check your company's website.</p></details>
 </section>
 <div class="ad">📢 Advertisement</div>
+</div>
+<div id="g-gas" hidden><section class="card"><h2>🔥 Gas Bill Estimator (SNGPL / SSGC)</h2><div class="g">
+<div><label for="gm">Gas used (MMBTU, from your bill)</label><input id="gm" type="number" min="0" step="any" placeholder="8.5"></div><div><label for="gr">Rate (Rs/MMBTU, from your bill)</label><input id="gr" type="number" min="0" step="any" placeholder="250"></div>
+<div><label for="gf">Fixed charges</label><select id="gf"><option value="600">Rs 600 (Protected)</option><option value="1500">Rs 1,500 (Non-protected, up to 1.5 hm³)</option><option value="3000">Rs 3,000 (Non-protected, above 1.5 hm³)</option><option value="0">Other / none</option></select></div>
+<div><label for="gt">GST %</label><input id="gt" type="number" min="0" step="0.5" value="18"></div>
+<div class="f"><label for="gx">Other charges: meter rent, arrears (Rs)</label><input id="gx" type="number" min="0" value="0"></div></div>
+<button class="btn" id="gg">🔥 Estimate Gas Bill</button><div id="go2"></div>
+<p class="sm">Domestic gas uses slab rates that rise steeply. Published sources report rates from about Rs 121 to Rs 4,200 per MMBTU depending on category and slab, so enter the exact rate printed on your own bill. The fixed charges listed are as reported for 2025-26 and may have changed.</p>
+<details><summary>Protected vs non-protected?</summary><p>According to published guides, consumers whose winter average consumption is at or below 0.9 hm³ are treated as protected and pay lower rates and fixed charges. The category is reviewed periodically, so cutting use in summer does not change it immediately.</p></details>
+<details><summary>Why can my bill jump suddenly?</summary><p>Rates rise by slab, so crossing a slab limit can add a large amount even for a small increase in use. Check the slab and category printed on your bill.</p></details></section></div>
+<div id="g-water" hidden><section class="card"><h2>💧 Water Bill Estimator</h2><div class="g">
+<div><label for="wu">Units used (as on your bill)</label><input id="wu" type="number" min="0" step="any" placeholder="20"></div><div><label for="wr">Rate per unit (Rs)</label><input id="wr" type="number" min="0" step="any" placeholder="12"></div><div><label for="ws">Sewerage / conservancy (% of water charge)</label><input id="ws" type="number" min="0" step="any" placeholder="0"></div><div><label for="wb">Fixed / meter charges (Rs)</label><input id="wb" type="number" min="0" step="any" placeholder="0"></div>
+<div class="f"><label for="wx">Other charges (Rs)</label><input id="wx" type="number" min="0" value="0"></div></div>
+<button class="btn" id="wg">💧 Estimate Water Bill</button><div id="wo"></div>
+<p class="sm">Water tariffs differ by city and authority (WASA, KWSC and others), so there is no single national rate. Enter the figures from your own bill.</p></section></div>
+<div id="g-net" hidden><section class="card"><h2>📶 Internet &amp; Phone: Taxes</h2><div class="g">
+<div class="f"><label for="nm">What do you want to do?</label><select id="nm"><option value="add">Add taxes to a base price</option><option value="rem">Find base price from a total with taxes</option></select></div>
+<div><label for="na">Amount (Rs)</label><input id="na" type="number" min="0" step="any" placeholder="1500"></div><div><label for="n1">Sales tax / GST (%)</label><input id="n1" type="number" min="0" step="any" placeholder=""></div><div class="f"><label for="n2">Advance / withholding tax (%)</label><input id="n2" type="number" min="0" step="any" placeholder="Check your bill"></div></div>
+<button class="btn" id="ng">Calculate</button><div id="no"></div>
+<p class="sm">Tax rates on mobile and internet services change often, so copy the percentages from your bill or package details. Taxes are applied together on the base price.</p></section>
+<section class="card"><h2>📊 Cost per GB</h2><div class="g"><div><label for="cp">Package price (Rs)</label><input id="cp" type="number" min="0" step="any" placeholder="1000"></div><div><label for="cb">Data (GB)</label><input id="cb" type="number" min="0" step="any" placeholder="50"></div></div><button class="btn o" id="cg">Calculate</button><div id="co2"></div></section></div>
+<div id="g-split" hidden><section class="card"><h2>🧮 Split a Bill</h2><div class="g">
+<div><label for="xt">Total bill (Rs)</label><input id="xt" type="number" min="0" step="any" placeholder="12000"></div><div><label for="xn">Number of people</label><input id="xn" type="number" min="0" step="any" placeholder="3"></div><div class="f"><label for="xw">Or unequal shares (e.g. 3,2,1)</label><input id="xw" placeholder="Leave empty for an equal split"></div></div>
+<button class="btn" id="xg">Split</button><div id="xo"></div></section>
+<section class="card"><h2>🗓️ Monthly Utilities Total</h2><div class="g">
+<div><label for="me">Electricity (Rs)</label><input id="me" type="number" min="0" step="any" placeholder=""></div><div><label for="mg2">Gas (Rs)</label><input id="mg2" type="number" min="0" step="any" placeholder=""></div><div><label for="mw">Water (Rs)</label><input id="mw" type="number" min="0" step="any" placeholder=""></div><div><label for="mi">Internet (Rs)</label><input id="mi" type="number" min="0" step="any" placeholder=""></div><div><label for="mp">Phone (Rs)</label><input id="mp" type="number" min="0" step="any" placeholder=""></div><div><label for="mo">Other (Rs)</label><input id="mo" type="number" min="0" step="any" placeholder=""></div></div>
+<button class="btn o" id="mg">Calculate Total</button><div id="mo2"></div></section></div>
 </main>
-<footer><div id="dl" class="sm">Your company: <a href="/mepco">MEPCO</a> · <a href="/lesco">LESCO</a> · <a href="/iesco">IESCO</a> · <a href="/fesco">FESCO</a> · <a href="/gepco">GEPCO</a> · <a href="/pesco">PESCO</a> · <a href="/hesco">HESCO</a> · <a href="/qesco">QESCO</a> · <a href="/sepco">SEPCO</a> · <a href="/tesco">TESCO</a> · <a href="/ke">K-Electric</a> · </div><b>BijliBill.pk</b> · <a href="privacy.html">Privacy Policy</a> · Rates last checked: <span id="ld"></span><br>Independent estimate tool. Not affiliated with any government body.</footer>
+<footer><div class="sm">Other utilities: <a href="/gas">Gas</a> · <a href="/water">Water</a> · <a href="/internet">Internet &amp; Phone</a> · <a href="/split">Split &amp; Total</a></div><div id="dl" class="sm">Your company: <a href="/mepco">MEPCO</a> · <a href="/lesco">LESCO</a> · <a href="/iesco">IESCO</a> · <a href="/fesco">FESCO</a> · <a href="/gepco">GEPCO</a> · <a href="/pesco">PESCO</a> · <a href="/hesco">HESCO</a> · <a href="/qesco">QESCO</a> · <a href="/sepco">SEPCO</a> · <a href="/tesco">TESCO</a> · <a href="/ke">K-Electric</a> · </div><b>UtilityBill.pk</b> · <a href="privacy.html">Privacy Policy</a> · Rates last checked: <span id="ld"></span><br>Independent estimate tool. Not affiliated with any government body.</footer>
 
 <script>
 // ---- RATES: edit only this block when the tariff changes ----
@@ -219,11 +249,23 @@ $("pgo").onclick=function(){
 $("lpg").onclick=function(){var b=fv("lpb",0),d=fv("lpd",0),r=fv("lpr",10);if(!(b>0)){alert("Please enter the bill amount.");return}var sc=b*r/100;$("lpo").innerHTML="<table><tr><td>Original bill</td><td>"+rs(b)+"</td></tr><tr><td>Late surcharge ("+r+"%)</td><td>"+rs(sc)+"</td></tr><tr class=t><td>Total if paid late</td><td>"+rs(b+sc)+"</td></tr></table>"+(d>0?"<p class=sm>"+d+" days late: the surcharge is usually a fixed amount after the due date, not per day. Check your bill.</p>":"")};
 $("rg").onclick=function(){var w=+$("rc").value,h=fv("rh",0),r=fv("rt",40),u=w*h/1000;$("ro").innerHTML="<table><tr><td>Daily units</td><td>"+u.toFixed(2)+"</td></tr><tr><td>Daily cost</td><td>"+rs(u*r)+"</td></tr><tr class=t><td>Monthly cost (30 days)</td><td>"+rs(u*r*30)+"</td></tr></table>"};
 // Language switch: English / Urdu script / Roman Urdu (main calculator only)
-var I18N=[[".hero h1","⚡ پاکستان بجلی بل کیلکولیٹر 2026","⚡ Pakistan Bijli Bill Calculator 2026"],[".hero p","اپنی ڈسکو کے یونٹ درج کریں اور بل فوراً دیکھیں۔","Apni company ke units daalein aur bill foran dekhein."],["main .card h2","🔢 بل نکالیں","🔢 Bill Calculate Karein"],["label[for=pv]","پچھلی ریڈنگ","Pichli reading"],["label[for=cr]","موجودہ ریڈنگ","Maujooda reading"],["label[for=un]","یا سیدھے یونٹ","Ya seedhe units"],["label[for=fx]","فکسڈ چارجز (روپے)","Fixed charges (Rs)"],["label[for=fp]","FPA + QTR (روپے فی یونٹ)","FPA + QTR (Rs/unit)"],["#go","⚡ بل نکالیں","⚡ Bill Nikalein"],["#wa","📲 واٹس ایپ پر شیئر کریں","📲 WhatsApp par share karein"]];
+var I18N=[[".hero h1","🧾 پاکستان یوٹیلیٹی بل کیلکولیٹر 2026","🧾 Pakistan Utility Bill Calculator 2026"],[".hero p","بجلی، گیس، پانی، انٹرنیٹ اور فون کے بل ایک جگہ۔","Bijli, gas, pani, internet aur phone ke bill ek jagah."],["main .card h2","🔢 بل نکالیں","🔢 Bill Calculate Karein"],["label[for=pv]","پچھلی ریڈنگ","Pichli reading"],["label[for=cr]","موجودہ ریڈنگ","Maujooda reading"],["label[for=un]","یا سیدھے یونٹ","Ya seedhe units"],["label[for=fx]","فکسڈ چارجز (روپے)","Fixed charges (Rs)"],["label[for=fp]","FPA + QTR (روپے فی یونٹ)","FPA + QTR (Rs/unit)"],["#go","⚡ بل نکالیں","⚡ Bill Nikalein"],["#wa","📲 واٹس ایپ پر شیئر کریں","📲 WhatsApp par share karein"]];
 var ORIG=I18N.map(function(x){return document.querySelector(x[0]).textContent}),DN=ORIG[0].indexOf("Pakistan")<0?ORIG[0].replace("⚡ ","").replace(" Bill Calculator 2026",""):"";
 function setL(l){I18N.forEach(function(x,i){var t=ORIG[i];if(l=="ur")t=(i==0&&DN)?"⚡ "+DN+" بجلی بل کیلکولیٹر 2026":x[1];if(l=="ro")t=(i==0&&DN)?"⚡ "+DN+" Bijli Bill Calculator 2026":x[2];document.querySelector(x[0]).textContent=t});document.documentElement.lang={en:"en",ur:"ur",ro:"ur-Latn"}[l];$("lg").value=l;try{localStorage.setItem("bb_l",l)}catch(e){}}
 $("lg").onchange=function(){setL(this.value)};
 var sl=null;try{sl=localStorage.getItem("bb_l")}catch(e){}if(sl&&sl!="en")setL(sl);
+// utilities hub
+function tbl(r,t){return"<table>"+r.map(function(x){return"<tr><td>"+x[0]+"</td><td>"+x[1]+"</td></tr>"}).join("")+"<tr class=t><td>"+t[0]+"</td><td>"+t[1]+"</td></tr></table>"}
+$("gg").onclick=function(){var m=fv("gm",0),r=fv("gr",0),f=+$("gf").value,g=fv("gt",18),x=fv("gx",0);if(!(m>0&&r>0)){alert("Enter MMBTU used and the rate from your bill.");return}var u=m*r,gs=(u+f)*g/100;$("go2").innerHTML=tbl([["Gas charges ("+m+" MMBTU × Rs "+r+")",rs(u)],["Fixed charges",rs(f)],["GST "+g+"%",rs(gs)],["Other charges",rs(x)]],["Estimated total",rs(u+f+gs+x)])};
+$("wg").onclick=function(){var u=fv("wu",0),r=fv("wr",0),s=fv("ws",0),b=fv("wb",0),x=fv("wx",0);if(!(u>0&&r>0)){alert("Enter units used and the rate per unit.");return}var w=u*r,sw=w*s/100;$("wo").innerHTML=tbl([["Water charges ("+u+" × Rs "+r+")",rs(w)],["Sewerage / conservancy ("+s+"%)",rs(sw)],["Fixed / meter charges",rs(b)],["Other charges",rs(x)]],["Estimated total",rs(w+sw+b+x)])};
+$("ng").onclick=function(){var a=fv("na",0),t=fv("n1",0)+fv("n2",0);if(!(a>0)){alert("Enter an amount.");return}if($("nm").value=="add"){var tx=a*t/100;$("no").innerHTML=tbl([["Base price",rs(a)],["Taxes ("+t+"% total)",rs(tx)]],["Total you pay",rs(a+tx)])}else{var b=a/(1+t/100);$("no").innerHTML=tbl([["Total paid",rs(a)],["Taxes included",rs(a-b)]],["Base price",rs(b)])}};
+$("cg").onclick=function(){var p=fv("cp",0),g=fv("cb",0);if(!(p>0&&g>0)){alert("Enter the price and GB.");return}$("co2").innerHTML=tbl([["Price",rs(p)],["Data",g+" GB"]],["Cost per GB",rs(p/g)])};
+$("xg").onclick=function(){var t=fv("xt",0),n=Math.max(1,Math.round(fv("xn",1))),w=$("xw").value.split(",").map(Number).filter(function(v){return v>0}),r=[],i;if(!(t>0)){alert("Enter the total bill.");return}if(w.length>1){var s=w.reduce(function(a,b){return a+b},0);for(i=0;i<w.length;i++)r.push(["Person "+(i+1)+" (share "+w[i]+")",rs(t*w[i]/s)])}else for(i=0;i<n;i++)r.push(["Person "+(i+1),rs(t/n)]);$("xo").innerHTML=tbl(r,["Total",rs(t)])};
+$("mg").onclick=function(){var id=["me","mg2","mw","mi","mp","mo"],nm=["Electricity","Gas","Water","Internet","Phone","Other"],r=[],s=0;id.forEach(function(k,i){var v=fv(k,0);s+=v;if(v)r.push([nm[i],rs(v)])});if(!s){alert("Enter at least one bill.");return}$("mo2").innerHTML=tbl(r,["Monthly total",rs(s)])+"<p class=sm>Yearly: "+rs(s*12)+"</p>"};
+var TABN=["el","gas","water","net","split"];
+function showTab(t,q){TABN.forEach(function(k){$("g-"+k).hidden=k!=t});document.querySelectorAll("#tabs button").forEach(function(b){b.className=b.dataset.t==t?"on":""});if(!q)try{history.replaceState(null,"","#"+t)}catch(e){}}
+document.querySelectorAll("#tabs button").forEach(function(b){b.onclick=function(){showTab(b.dataset.t)}});
+var TAB0="el",HH=location.hash.slice(1);showTab(TABN.indexOf(HH)>=0?HH:TAB0,1);
 // slab table
 var p0=0;$("st").innerHTML="<tr><th>Unprotected</th><th>Rs/unit</th></tr>"+UNPROT.map(function(s){var l=(p0+1)+(s[0]>1e8?"+":"-"+s[0]);p0=s[0];return"<tr><td>"+l+"</td><td>"+s[1].toFixed(2)+"</td></tr>"}).join("")+"<tr><th>Protected</th><th></th></tr><tr><td>1-100</td><td>"+PROT[0][1]+"</td></tr><tr><td>101-200</td><td>"+PROT[1][1]+"</td></tr>";
 $("upd").textContent="Base rates (excluding taxes and adjustments). Sources differ slightly, so always compare with your own bill.";$("ld").textContent=CHECKED;
